@@ -1,14 +1,16 @@
-import { useEffect, useRef } from 'react'
-import { useGLTF, useVideoTexture } from '@react-three/drei'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { Group, Mesh } from 'three';
+import { useEffect, useRef } from "react";
+import { useGLTF, useVideoTexture } from "@react-three/drei";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { Group, Mesh } from "three";
 
 const DemoComputer = (props: { texture: string }) => {
   const group = useRef<Group>(null);
-  const { nodes, materials } = useGLTF('/models/computer.glb')
+  const { nodes, materials } = useGLTF("/models/computer.glb");
 
-  const txt = useVideoTexture(props.texture ? props.texture : '/texture/project/project1.mp4');
+  const txt = useVideoTexture(
+    props.texture ? props.texture : "/texture/project/project1.mp4"
+  );
 
   useEffect(() => {
     if (txt) {
@@ -21,14 +23,10 @@ const DemoComputer = (props: { texture: string }) => {
       gsap.from(group.current?.rotation, {
         y: Math.PI / 2,
         duration: 1,
-        ease: 'power3.out'
-      }
-      )
+        ease: "power3.out",
+      });
     }
-
   }, [txt]);
-
-
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -37,8 +35,8 @@ const DemoComputer = (props: { texture: string }) => {
           name="monitor-screen"
           castShadow
           receiveShadow
-          geometry={(nodes['monitor-screen'] as Mesh).geometry}
-          material={(nodes['monitor-screen'] as Mesh).material}
+          geometry={(nodes["monitor-screen"] as Mesh).geometry}
+          material={(nodes["monitor-screen"] as Mesh).material}
           position={[0.127, 1.831, 0.511]}
           rotation={[1.571, -0.005, 0.031]}
           scale={[0.661, 0.608, 0.401]}
@@ -49,7 +47,8 @@ const DemoComputer = (props: { texture: string }) => {
           name="RootNode"
           position={[0, 1.093, 0]}
           rotation={[-Math.PI / 2, 0, -0.033]}
-          scale={0.045}>
+          scale={0.045}
+        >
           <group
             name="Screen001"
             position={[5.658, 1.643, 0.812]}
@@ -955,69 +954,70 @@ const DemoComputer = (props: { texture: string }) => {
           name="Monitor-B-_computer_0"
           position={[0.266, 1.132, 0.051]}
           rotation={[0, -0.033, 0]}
-          scale={[0.042, 0.045, 0.045]}>
+          scale={[0.042, 0.045, 0.045]}
+        >
           <mesh
             name="Monitor-B-_computer_0_1"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_1'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_1"] as Mesh).geometry}
             material={materials.computer}
           />
           <mesh
             name="Monitor-B-_computer_0_2"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_2'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_2"] as Mesh).geometry}
             material={materials.base__0}
           />
           <mesh
             name="Monitor-B-_computer_0_3"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_3'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_3"] as Mesh).geometry}
             material={materials.Material_36}
           />
           <mesh
             name="Monitor-B-_computer_0_4"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_4'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_4"] as Mesh).geometry}
             material={materials.Material_35}
           />
           <mesh
             name="Monitor-B-_computer_0_5"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_5'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_5"] as Mesh).geometry}
             material={materials.Material_34}
           />
           <mesh
             name="Monitor-B-_computer_0_6"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_6'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_6"] as Mesh).geometry}
             material={materials.keys}
           />
           <mesh
             name="Monitor-B-_computer_0_7"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_7'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_7"] as Mesh).geometry}
             material={materials.keys2}
           />
           <mesh
             name="Monitor-B-_computer_0_8"
             castShadow
             receiveShadow
-            geometry={(nodes['Monitor-B-_computer_0_8'] as Mesh).geometry}
+            geometry={(nodes["Monitor-B-_computer_0_8"] as Mesh).geometry}
             material={materials.Material_37}
           />
         </group>
       </group>
     </group>
-  )
-}
+  );
+};
 
-useGLTF.preload('/models/computer.glb')
+useGLTF.preload("/models/computer.glb");
 
 export default DemoComputer;

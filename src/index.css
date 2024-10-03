@@ -151,6 +151,18 @@ body {
   }
 }
 
+/* zoomable video */
+
+.zoom-video-enter-active {
+  @apply transition-all duration-500;
+  transform: scale(1);
+}
+
+.zoom-video-leave-active {
+  @apply transition-all duration-500;
+  transform: scale(0);
+}
+
 .waving-hand {
   animation-name: wave-animation;
   animation-duration: 2.5s;

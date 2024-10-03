@@ -1,16 +1,23 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-
 const Contact = () => {
-  const [formData, setFormData] = useState<{ name: string; email: string; message: string }>({
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    message: string;
+  }>({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleChange = ({ target: { name, value } }: { target: { name: string, value: string } }) => {
+  const handleChange = ({
+    target: { name, value },
+  }: {
+    target: { name: string; value: string };
+  }) => {
     setFormData({ ...formData, [name]: value });
   };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -27,10 +34,10 @@ const Contact = () => {
           to_name: "Om Satapathy",
           from_email: formData.email,
           to_email: "omsatapathy05@gmail.com",
-          message: formData.message
+          message: formData.message,
         },
         "A8Lf15l-LeKIvR-rs"
-      )
+      );
 
       alert("The message was set successfully");
 
@@ -38,32 +45,37 @@ const Contact = () => {
       setFormData({
         name: "",
         email: "",
-        message: ""
-      })
-
+        message: "",
+      });
     } catch (error) {
       setIsLoading(false);
       console.log("Error is : ", error);
       alert("Something went wrong");
     }
-
-
   };
 
   const formRef = useRef<HTMLFormElement>(null);
 
-
   return (
     <section className="c-space my-20" id="contact">
       <div className="relative min-h-screen flex items-center justify-center flex-col">
-        <img src="/assets/terminal.png" alt="terminal-background" className="absolute inset-0 min-h-screen lg:flex hidden" />
+        <img
+          src="/assets/terminal.png"
+          alt="terminal-background"
+          className="absolute inset-0 min-h-screen lg:flex hidden"
+        />
         <div className="contact-container">
           <h3 className="head-text">Let's Connect</h3>
-          <p className="text-lg text-white">Want to chat? Just drop me a message using the form below, and I'll get back to you within three hours—promise!</p>
+          <p className="text-lg text-white">
+            Want to chat? Just drop me a message using the form below, and I'll
+            get back to you within three hours—promise!
+          </p>
 
-          <form ref={formRef}
+          <form
+            ref={formRef}
             onSubmit={handleSubmit}
-            className="mt-12 mx-4 flex flex-col space-y-7">
+            className="mt-12 mx-4 flex flex-col space-y-7"
+          >
             <label className="space-y-3">
               <span className="field-label">Full Name</span>
               <input
@@ -104,16 +116,19 @@ const Contact = () => {
             </label>
 
             <button className="field-btn" type="submit" disabled={isLoading}>
-              {isLoading ? 'Sending...' : "Send Message"}
+              {isLoading ? "Sending..." : "Send Message"}
 
-              <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow " />
+              <img
+                src="/assets/arrow-up.png"
+                alt="arrow-up"
+                className="field-btn_arrow "
+              />
             </button>
-
           </form>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Contact;
