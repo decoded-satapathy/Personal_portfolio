@@ -1,4 +1,3 @@
-
 import Button from "./Button";
 import RotatingGlobe from "./RotatingGlobe";
 import { useState } from "react";
@@ -15,6 +14,7 @@ const About = () => {
   };
   return (
     <section className="c-space my-20" id="about">
+      <p className="head-text md:pt-32 pb-12">About Me</p>
       <div className="grid xl:grid-cols-6 xl:grid-rows-5 md:grid-cols-2 md:grid-rows-3 grid-cols-1 grid-rows-auto gap-4 sm:gap-4 ">
         {/* <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 md:grid-rows-3 grid-cols-1 grid-rows-5 gap-4"> */}
 

@@ -33,7 +33,7 @@ export default function ZoomableVideo({ src }: ZoomableVideoProps) {
         <div className="absolute top-4 right-4 z-50">
           <button
             onClick={handleVideoClick}
-            className="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition"
+            className="arrow-btn flex justify-center items-center bg-black-300"
             title="Zoom In"
           >
             <FaSearchPlus className="text-white text-2xl" />
@@ -65,7 +65,7 @@ export default function ZoomableVideo({ src }: ZoomableVideoProps) {
         <div className="absolute top-4 right-4">
           <button
             onClick={handleVideoClick}
-            className="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-all"
+            className="arrow-btn flex justify-center items-center bg-black-300"
             title="Zoom Out"
           >
             <FaSearchMinus className="text-white text-2xl" />
