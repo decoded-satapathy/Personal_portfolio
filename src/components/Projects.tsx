@@ -109,7 +109,7 @@ const Projects = () => {
             </Center>
             <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
           </Canvas>
-          <ZoomableVideo src={currentProject.texture} alt="alt" />
+          <ZoomableVideo src={currentProject.texture} />
         </div>
       </div>
     </section>

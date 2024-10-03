@@ -3,10 +3,9 @@ import { FaSearchPlus, FaSearchMinus } from "react-icons/fa";
 
 interface ZoomableVideoProps {
   src: string;
-  alt: string;
 }
 
-export default function ZoomableVideo({ src, alt }: ZoomableVideoProps) {
+export default function ZoomableVideo({ src }: ZoomableVideoProps) {
   const [isZoomed, setIsZoomed] = useState(false);
 
   const handleVideoClick = () => {
