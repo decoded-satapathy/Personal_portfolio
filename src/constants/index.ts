@@ -246,7 +246,14 @@ export const myProjects = [
   },
 ];
 
-export const calculateSizes = (isSmall: boolean, isMobile: boolean, isTablet: boolean) => {
+export const calculateSizes = (isSmall: boolean, isMobile: boolean, isTablet: boolean): {
+  deskScale: number,
+  deskPosition: [number, number, number],
+  cubePosition: [number, number, number],
+  reactLogoPosition: [number, number, number],
+  ringPosition: [number, number, number],
+  targetPosition: [number, number, number]
+} => {
   return {
     deskScale: isSmall ? 0.05 : isMobile ? 0.06 : 0.065,
     deskPosition: isMobile ? [0.5, -4.5, 0] : [0.25, -5.5, 0],

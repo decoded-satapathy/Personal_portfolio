@@ -1,4 +1,5 @@
 import { Float, useGLTF } from '@react-three/drei'
+import { Mesh } from 'three'
 
 const ReactLogo = (props: any) => {
   const { nodes, materials } = useGLTF('/models/react_logo.glb')
@@ -6,7 +7,7 @@ const ReactLogo = (props: any) => {
     <Float floatIntensity={1}>
       <group position={[8, 8, 0]} scale={0.3} {...props} dispose={null}>
         <mesh
-          geometry={nodes['React-Logo_Material002_0'].geometry}
+          geometry={(nodes['React-Logo_Material002_0'] as Mesh).geometry}
           material={materials['Material.002']}
           position={[0, 0.079, 0.181]}
           rotation={[0, 0, -Math.PI / 2]}

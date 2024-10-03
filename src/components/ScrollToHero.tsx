@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ScrollToHero = () => {
   const [showButton, setShowButton] = useState(false);
@@ -46,7 +46,7 @@ const ScrollToHero = () => {
       {showButton && (
         <button
           onClick={scrollToHero}
-          className="fixed bottom-[70px] left-[20px]"
+          className="fixed bottom-[70px] left-[20px] motion-reduce:animate-bounce"
         >
           <div className='rounded-full p-3 bg-black-300 arrow-gradient'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="white" className="size-6 text-white">

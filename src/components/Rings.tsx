@@ -2,11 +2,12 @@ import * as react from '@gsap/react';
 import { Center, useTexture } from '@react-three/drei';
 import gsap from 'gsap';
 import { useCallback, useRef } from 'react';
+import { Mesh } from 'three';
 
-function Rings({ position }) {
-  const refList = useRef([]);
-  const getRef = useCallback((mesh) => {
-    if (mesh && !refList.current.includes(mesh)) {
+function Rings({ position }: { position: [number, number, number] }) {
+  const refList = useRef<Mesh[]>([]);
+  const getRef = useCallback((mesh: Mesh) => {
+    if (mesh && !refList.current?.includes(mesh)) {
       refList.current.push(mesh);
     }
   }, []);

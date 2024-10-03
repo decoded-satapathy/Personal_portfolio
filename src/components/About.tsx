@@ -1,4 +1,4 @@
-import Globe from "react-globe.gl";
+
 import Button from "./Button";
 import RotatingGlobe from "./RotatingGlobe";
 import { useState } from "react";

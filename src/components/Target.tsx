@@ -2,18 +2,22 @@ import { useGLTF } from '@react-three/drei'
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Mesh } from 'three';
 
 function Target(props: any) {
-  const targetRef = useRef();
+  const targetRef = useRef<Mesh>();
   const { scene } = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/target-stand/model.gltf');
 
   useGSAP(() => {
-    gsap.to(targetRef.current?.position, {
-      y: targetRef.current?.position.y + 0.5,
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true
-    })
+    if (targetRef.current) {
+      gsap.to(targetRef.current?.position, {
+        y: targetRef.current?.position.y + 0.5,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true
+      })
+
+    }
   })
 
   return (

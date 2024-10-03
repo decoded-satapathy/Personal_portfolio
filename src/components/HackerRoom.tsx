@@ -5,12 +5,50 @@ Files: hacker-room-new.glb [34.62MB] > /Users/hsuwinlat/Desktop/jsm pj/threejscc
 */
 
 import { useGLTF, useTexture } from '@react-three/drei';
+import { GLTF } from 'three/examples/jsm/Addons.js';
+import { Mesh } from 'three';
+import * as THREE from 'three';
 
-const HackerRoom = (props) => {
-  const { nodes, materials } = useGLTF('/models/hacker-room.glb');
+type GLTFResult = GLTF & {
+  nodes: {
+    screen_screens_0: Mesh;
+    screen_glass_glass_0: Mesh;
+    table_table_mat_0_1: Mesh;
+    table_table_mat_0_2: Mesh;
+    table_table_mat_0_3: Mesh;
+    table_table_mat_0_4: Mesh;
+    table_table_mat_0_5: Mesh;
+    table_table_mat_0_6: Mesh;
+    table_table_mat_0_7: Mesh;
+    table_table_mat_0_8: Mesh;
+    table_table_mat_0_9: Mesh;
+    table_table_mat_0_10: Mesh;
+    table_table_mat_0_11: Mesh;
+    table_table_mat_0_12: Mesh;
+  };
+  materials: {
+    screens: THREE.Material;
+    glass: THREE.Material;
+    table_mat: THREE.Material;
+    computer_mat: THREE.Material;
+    server_mat: THREE.Material;
+    vhsPlayer_mat: THREE.Material;
+    stand_mat: THREE.Material;
+    mat_mat: THREE.Material;
+    arm_mat: THREE.Material;
+    tv_mat: THREE.Material;
+    cables_mat: THREE.Material;
+    props_mat: THREE.Material;
+    ground_mat: THREE.Material;
+    key_mat: THREE.Material;
+  };
+};
+
+const HackerRoom = (props: JSX.IntrinsicElements['group']) => {
+  const { nodes, materials } = useGLTF('/models/hacker-room.glb') as unknown as GLTFResult;
 
   const monitortxt = useTexture('textures/desk/monitor.png');
-  // const screenTxt = useTexture('textures/desk/screen.png');
+
   const screenTxt = useTexture('textures/desk/screen.png');
 
   return (
@@ -37,9 +75,8 @@ const HackerRoom = (props) => {
       <mesh geometry={nodes.table_table_mat_0_12.geometry} material={materials.key_mat} />
     </group>
   );
-}
+};
 
 useGLTF.preload('/models/hacker-room.glb');
 
 export default HackerRoom;
-

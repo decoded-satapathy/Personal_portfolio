@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations, useVideoTexture } from '@react-three/drei'
+import { useGLTF, useVideoTexture } from '@react-three/drei'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { Group, Mesh } from 'three';
 
 const DemoComputer = (props: { texture: string }) => {
-  const group = useRef()
+  const group = useRef<Group>(null);
   const { nodes, materials } = useGLTF('/models/computer.glb')
 
   const txt = useVideoTexture(props.texture ? props.texture : '/texture/project/project1.mp4');
@@ -16,12 +17,15 @@ const DemoComputer = (props: { texture: string }) => {
   }, [txt]);
 
   useGSAP(() => {
-    gsap.from(group.current.rotation, {
-      y: Math.PI / 2,
-      duration: 1,
-      ease: 'power3.out'
+    if (group.current) {
+      gsap.from(group.current?.rotation, {
+        y: Math.PI / 2,
+        duration: 1,
+        ease: 'power3.out'
+      }
+      )
     }
-    )
+
   }, [txt]);
 
 
@@ -33,8 +37,8 @@ const DemoComputer = (props: { texture: string }) => {
           name="monitor-screen"
           castShadow
           receiveShadow
-          geometry={nodes['monitor-screen'].geometry}
-          material={nodes['monitor-screen'].material}
+          geometry={(nodes['monitor-screen'] as Mesh).geometry}
+          material={(nodes['monitor-screen'] as Mesh).material}
           position={[0.127, 1.831, 0.511]}
           rotation={[1.571, -0.005, 0.031]}
           scale={[0.661, 0.608, 0.401]}
@@ -956,56 +960,56 @@ const DemoComputer = (props: { texture: string }) => {
             name="Monitor-B-_computer_0_1"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_1'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_1'] as Mesh).geometry}
             material={materials.computer}
           />
           <mesh
             name="Monitor-B-_computer_0_2"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_2'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_2'] as Mesh).geometry}
             material={materials.base__0}
           />
           <mesh
             name="Monitor-B-_computer_0_3"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_3'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_3'] as Mesh).geometry}
             material={materials.Material_36}
           />
           <mesh
             name="Monitor-B-_computer_0_4"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_4'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_4'] as Mesh).geometry}
             material={materials.Material_35}
           />
           <mesh
             name="Monitor-B-_computer_0_5"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_5'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_5'] as Mesh).geometry}
             material={materials.Material_34}
           />
           <mesh
             name="Monitor-B-_computer_0_6"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_6'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_6'] as Mesh).geometry}
             material={materials.keys}
           />
           <mesh
             name="Monitor-B-_computer_0_7"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_7'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_7'] as Mesh).geometry}
             material={materials.keys2}
           />
           <mesh
             name="Monitor-B-_computer_0_8"
             castShadow
             receiveShadow
-            geometry={nodes['Monitor-B-_computer_0_8'].geometry}
+            geometry={(nodes['Monitor-B-_computer_0_8'] as Mesh).geometry}
             material={materials.Material_37}
           />
         </group>
